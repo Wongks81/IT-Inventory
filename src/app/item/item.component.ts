@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { GlobalCommon } from '../global/common.model';
 import { Item } from "../model/item.model";
 import { ItemService } from '../services/Item.service';
 
@@ -9,21 +11,29 @@ import { ItemService } from '../services/Item.service';
 })
 export class ItemComponent implements OnInit {
 
-  itemobj:Item = new Item();
-
-
-  constructor(public itemService : ItemService) { }
+  itemList : any = [];
+  constructor(public itemService : ItemService,
+              public globalObj : GlobalCommon,
+              private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.itemService.getItem();
+    this.getItemList();
   }
 
   onSubmit(){
     alert('testing');
   }
 
-  getItems(){
-
+  getItemList(){
+    this.itemService.getItemList()
+      .subscribe(res=>{
+        console.log(res);
+        this.itemList = res;
+      },
+      res => this.Error);
   }
 
+  Error(res){
+      alert(res);
+  }
 }

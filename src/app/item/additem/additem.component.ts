@@ -9,13 +9,13 @@ import { ItemService } from '../../services/Item.service';
 })
 export class AddItemComponent implements OnInit {
 
-  itemobj:Item = new Item();
+  itemList : any = [];
 
 
   constructor(public itemService : ItemService) { }
 
   ngOnInit(): void {
-    this.itemService.getItem();
+    
   }
 
   onSubmit(){

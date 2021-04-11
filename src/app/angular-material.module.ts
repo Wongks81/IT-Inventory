@@ -9,6 +9,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatCardModule } from "@angular/material/card";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 
 const materialModules = [
@@ -21,6 +23,8 @@ const materialModules = [
   MatButtonModule,
   MatMenuModule,
   MatCardModule,
+  MatPaginatorModule,
+  MatExpansionModule
 ];
 
 @NgModule({

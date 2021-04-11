@@ -1,4 +1,5 @@
 const express = require('express');
+const pool = require('./db');
 
 const app = express();
 
@@ -18,16 +19,31 @@ app.use((req,res,next) =>{
     next();
 });
 
-app.get('/api/items',(req,res)=>{
-    const objs =[
-        {itemId: '1', itemName : 'laptop'},
-        {itemId: '2', itemName : 'desktop'}
-    ];
+//works for arrays
+// app.get('/api/items',(req,res)=>{
+//     const objs =[
+//         {itemId: '1', itemName : 'laptop'},
+//         {itemId: '2', itemName : 'desktop'}
+//     ];
     
-    res.status(200).json({
-        message:'List fetched successfully!',
-        items: objs
-    });
+//     res.status(200).json({
+//         message:'Item List fetched successfully!',
+//         items: objs
+//     });
+// });
+
+app.get('/api/items', async(req,res)=>{
+    try{
+        
+        const getList = await pool.query("Select * from tblItem");
+        res.status(200).json({
+            message:'Item List fetched successfully!',
+            // rows is the sql results
+            items: getList.rows
+        });
+    }catch(error){
+        console.log(error);
+    }
 });
 
 module.exports = app;
