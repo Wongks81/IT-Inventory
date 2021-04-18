@@ -11,7 +11,10 @@ export class EdititemComponent implements OnInit {
   itemObj = new Item();
 
 
-  constructor(public itemService : ItemService) { }
+  constructor(public itemService : ItemService) { 
+    
+
+  }
 
   ngOnInit(): void {
   }

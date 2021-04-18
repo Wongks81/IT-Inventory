@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from "../../model/item.model";
 import { ItemService } from '../../services/Item.service';
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-additem',
@@ -21,10 +22,9 @@ export class AddItemComponent implements OnInit {
 
   onSubmit(){
     var itemPost :any = {
-      itemId : this.itemObj.itemId,
-      itemName : this.itemObj.itemName
+      itemName : this.itemObj.itemFGroup.get('cItemCheck').value
     }
-    this.itemObj = new Item();
+    console.log(itemPost);
 
     this.itemService.postAddItem(itemPost)
       .subscribe(res=>{

@@ -18,7 +18,7 @@ export class ItemService{
         return this.http.get<{message:string, itemList:Item[]}>(this.serverURL);
     }
 
-    postAddItem(itemObj: Item){
+    postAddItem(itemObj: any){
         //POST add single item to DB
         return this.http.post(this.serverURL, itemObj);
     }

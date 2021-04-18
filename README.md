@@ -16,3 +16,5 @@ New
 Fix
 a. Added a "Back" button to add item to route back to list page
     a1. Set the buttons in item.css to 100px width
+    a2. Changed the additem form from ngModel to ngSubmit with the form control to get the values.
+        - ngModel with FormControl will be deprecated soon.
