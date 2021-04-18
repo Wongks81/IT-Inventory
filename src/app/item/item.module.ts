@@ -7,11 +7,13 @@ import { AngularMaterialModule } from "../angular-material.module";
 import { AddItemComponent } from "./additem/additem.component";
 import { ItemComponent } from "./item.component";
 import { headerRoutes } from "./item.routing";
+import { EdititemComponent } from './edititem/edititem.component';
 
 @NgModule({
     declarations:[
         ItemComponent,
-        AddItemComponent
+        AddItemComponent,
+        EdititemComponent
     ],
     imports:[
         CommonModule,

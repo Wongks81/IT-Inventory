@@ -14,7 +14,12 @@ export class ItemService{
         ){}
 
     getItemList(){
+        //Get list of items for display
         return this.http.get<{message:string, itemList:Item[]}>(this.serverURL);
-        
+    }
+
+    postAddItem(itemObj: Item){
+        //POST add single item to DB
+        return this.http.post(this.serverURL, itemObj);
     }
 }

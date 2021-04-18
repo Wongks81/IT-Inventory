@@ -1,6 +1,6 @@
 
 -- create table SQL:
-create table tblItem (
+create table tblItems (
     itemId integer,
     itemName text
 );
@@ -8,3 +8,9 @@ create table tblItem (
 -- insert test data
 insert into tblItem (itemId,itemName) values (1,'Desktop');
 insert into tblItem (itemId,itemName) values (2,'Laptop');
+
+-- find seq name 
+select pg_get_serial_sequence('tblitems', 'itemId')
+
+-- reset identity number
+ALTER SEQUENCE "tblitem_itemId_seq" RESTART WITH 1;

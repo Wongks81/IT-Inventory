@@ -1,9 +1,8 @@
 <mat-toolbar color="primary">
-  <span>Inventory App</span>
-  <span class="example-spacer"></span>
+  <button mat-button routerLink="/"><h2>Inventory App</h2></button>
+  <span class="spacer"></span>
   <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon> Item Menu</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/item/additem">Add Item</button>
-    <button mat-menu-item>Item 2</button>
   </mat-menu>
 </mat-toolbar>

@@ -35,11 +35,24 @@ app.use((req,res,next) =>{
 app.get('/api/items', async(req,res)=>{
     try{
         
-        const getList = await pool.query("Select * from tblItem");
+        const getList = await pool.query("Select * from tblItems");
         res.status(200).json({
             message:'Item List fetched successfully!',
             // rows is the sql results
             items: getList.rows
+        });
+    }catch(error){
+        console.log(error);
+    }
+});
+
+app.post('/api/items', async(req,res)=>{
+    try{
+        const {itemId, itemName} = req.body;
+        // Double quotes to keep the column Name casing.
+        const postList = await pool.query("Insert into tblitems (\"itemName\") values ($1)", [itemName]);
+        res.status(200).send({
+            message:'Item posted successfully!',
         });
     }catch(error){
         console.log(error);

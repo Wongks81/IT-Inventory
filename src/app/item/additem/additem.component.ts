@@ -10,6 +10,7 @@ import { ItemService } from '../../services/Item.service';
 export class AddItemComponent implements OnInit {
 
   itemList : any = [];
+  itemObj = new Item();
 
 
   constructor(public itemService : ItemService) { }
@@ -19,6 +20,24 @@ export class AddItemComponent implements OnInit {
   }
 
   onSubmit(){
-      
+    var itemPost :any = {
+      itemId : this.itemObj.itemId,
+      itemName : this.itemObj.itemName
+    }
+    this.itemObj = new Item();
+
+    this.itemService.postAddItem(itemPost)
+      .subscribe(res=>{
+        console.log(itemPost);
+        console.log(res);
+      },
+      res => this.Error);
+
+    
   }
+
+  Error(res){
+    alert("Error" + res );
+  }
+
 }
