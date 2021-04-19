@@ -2,12 +2,12 @@
 Before 17/04/21
 1. Get rows from postgres done
 2. Lazy-Loading for item done
-
+-----------------------------------------------------------------------------------------------------
 17/04/21
 1. To post to postgres db - done
 2. Add documention in sql for resetting identity number.
 3. Validation only done for required on itemName
-
+-----------------------------------------------------------------------------------------------------
 18/04/21
 New
 1. To edit item entries - done for itemName
@@ -22,14 +22,15 @@ b. Changed the additem form from ngModel to ngSubmit with the form control to ge
     - ngModel with FormControl will be deprecated soon.
 c. Changed validators for model from cItemCheck to fgItemName for better controls indication
 d. Added get list of items to be ordered by itemId as item after editing will appear as last record.
-
+-----------------------------------------------------------------------------------------------------
 19.04.21
-1. delete item show snackbar on top. -> doing, having issues
+1. delete item done
+
 
 Fix
 a. Init a new instance of itemObj in postAddItem to clear the inputs
 b. Fix edited item alert message from add to edit
-
+-----------------------------------------------------------------------------------------------------
 ###################################################################################################
 Planned changes
 1. Delete will not delete from DB, a flag will be used to indicate it is deleted.

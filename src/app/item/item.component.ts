@@ -23,9 +23,7 @@ export class ItemComponent implements OnInit {
     this.getItemList();
   }
 
-  onSubmit(){
-    alert('testing');
-  }
+  
 
   getItemList(){
     this.itemService.getItemList()
@@ -46,10 +44,11 @@ export class ItemComponent implements OnInit {
   deleteItem(selected : Item){
     var reply = confirm("Remove " + selected.itemName + " from Database?");
     if(reply == true){
+
       this.itemService.deleteItem(selected.itemId)
         .subscribe(
           //snackbar open here on top of screen
-          res => {this.deleteSnackBar();},
+          res => this.Success(res),
           res => this.Error(res)
         );
     }

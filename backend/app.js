@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const pool = require('./db');
 
 const app = express();
+app.use(cors());
 
 // use body-parser middleware
 app.use(express.json());
@@ -18,19 +20,6 @@ app.use((req,res,next) =>{
     res.setHeader("Access-Control-Allow-Methods", "DELETE, GET, POST, PUT, OPTIONS");
     next();
 });
-
-//works for arrays
-// app.get('/api/items',(req,res)=>{
-//     const objs =[
-//         {itemId: '1', itemName : 'laptop'},
-//         {itemId: '2', itemName : 'desktop'}
-//     ];
-    
-//     res.status(200).json({
-//         message:'Item List fetched successfully!',
-//         items: objs
-//     });
-// });
 
 app.get('/api/items', async(req,res)=>{
     try{
@@ -71,11 +60,11 @@ app.put('/api/items', async(req,res)=>{
     }
 });
 
-app.delete('/api/items', async(req,res)=>{
+app.delete('/api/items/:id', async(req,res)=>{
     try{
-        const {itemId} = req.body;
+        const {id} = req.params;
         // Double quotes to keep the column Name casing.
-        const deleteList = await pool.query("Delete from \"itemName\" where \"itemId\" = $1", [itemId]);
+        const deleteList = await pool.query("Delete from tblitems where \"itemId\" = $1", [id]);
         res.status(200).send({
             message:'Item deleted successfully!',
         });
