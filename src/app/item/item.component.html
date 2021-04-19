@@ -11,7 +11,8 @@
             </mat-panel-description>
             </mat-expansion-panel-header>
             <p>This is the details for the item</p>
-            <button mat-button class="float-right" color="primary" routerLink="/item/edititem">Edit Item</button>
+            <button mat-button class="float-right" color="primary" (click)="editItem(item)">Edit Item</button>
+            <button mat-button class="float-right" color="primary" (click)="deleteItem(item)">Delete Item</button>
         </mat-expansion-panel>
     </mat-accordion>
       

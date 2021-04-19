@@ -11,7 +11,7 @@ export class Item{
 
         var vItemCheck =[];
         vItemCheck.push(Validators.required);
-        this.itemFGroup.addControl("cItemCheck", new FormControl('', Validators.compose(vItemCheck)));
+        this.itemFGroup.addControl("fgItemName", new FormControl('', Validators.compose(vItemCheck)));
         
     }
 };

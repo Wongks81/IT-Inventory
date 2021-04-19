@@ -12,14 +12,14 @@
             <div class="row">
                 <div class="form-group col-12">
                     <label>Device Name / Model</label>
-                    <input class="form-control" formControlName="cItemCheck" id="deviceName" 
+                    <input class="form-control" formControlName="fgItemName" id="deviceName" 
                     placeholder="Enter Name / Model of the Device" name="itemName">
                   </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <div *ngIf="itemObj.itemFGroup.controls['cItemCheck'].dirty" 
-                        [hidden]="!(itemObj.itemFGroup.controls['cItemCheck'].hasError('required'))"
+                    <div *ngIf="itemObj.itemFGroup.controls['fgItemName'].dirty" 
+                        [hidden]="!(itemObj.itemFGroup.controls['fgItemName'].hasError('required'))"
                         style="text-align: center; color:red"><b>Item Name is required</b></div>
                 </div>
             </div>

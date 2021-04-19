@@ -22,14 +22,12 @@ export class AddItemComponent implements OnInit {
 
   onSubmit(){
     var itemPost :any = {
-      itemName : this.itemObj.itemFGroup.get('cItemCheck').value
+      itemName : this.itemObj.itemFGroup.get('fgItemName').value
     }
-    console.log(itemPost);
 
     this.itemService.postAddItem(itemPost)
       .subscribe(res=>{
-        console.log(itemPost);
-        console.log(res);
+        this.itemObj = new Item();
       },
       res => this.Error);
 

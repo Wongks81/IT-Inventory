@@ -15,7 +15,7 @@ app.use((req,res,next) =>{
         "Access-Control-Allow-Headers", 
         "Origin, X-Requested-With, Content-Type, Accept"
         );
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
+    res.setHeader("Access-Control-Allow-Methods", "DELETE, GET, POST, PUT, OPTIONS");
     next();
 });
 
@@ -34,8 +34,7 @@ app.use((req,res,next) =>{
 
 app.get('/api/items', async(req,res)=>{
     try{
-        
-        const getList = await pool.query("Select * from tblItems");
+        const getList = await pool.query("Select * from tblItems order by \"itemId\" asc");
         res.status(200).json({
             message:'Item List fetched successfully!',
             // rows is the sql results
@@ -53,6 +52,32 @@ app.post('/api/items', async(req,res)=>{
         const postList = await pool.query("Insert into tblitems (\"itemName\") values ($1)", [itemName]);
         res.status(200).send({
             message:'Item posted successfully!',
+        });
+    }catch(error){
+        console.log(error);
+    }
+});
+
+app.put('/api/items', async(req,res)=>{
+    try{
+        const {itemId, itemName} = req.body;
+        // Double quotes to keep the column Name casing.
+        const putList = await pool.query("Update tblitems set \"itemName\" = $1 where \"itemId\" = $2", [itemName, itemId]);
+        res.status(200).send({
+            message:'Item changed successfully!',
+        });
+    }catch(error){
+        console.log(error);
+    }
+});
+
+app.delete('/api/items', async(req,res)=>{
+    try{
+        const {itemId} = req.body;
+        // Double quotes to keep the column Name casing.
+        const deleteList = await pool.query("Delete from \"itemName\" where \"itemId\" = $1", [itemId]);
+        res.status(200).send({
+            message:'Item deleted successfully!',
         });
     }catch(error){
         console.log(error);
