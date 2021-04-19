@@ -25,7 +25,7 @@ d. Added get list of items to be ordered by itemId as item after editing will ap
 -----------------------------------------------------------------------------------------------------
 19.04.21
 1. delete item done
-
+2. Tried to split the routes to another file, FAILED!!!
 
 Fix
 a. Init a new instance of itemObj in postAddItem to clear the inputs
@@ -37,3 +37,7 @@ Planned changes
     - Only delete the item from DB after a set amount of time.
 
 2. To change the panel color when the item is due for maintenance or out of warranty with X mths.
+
+3. Tried to extract routes from server.js to a new file, failed to link for post, put delete.
+   No issue with get.
+   To troubleshoot more when have time.
