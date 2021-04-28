@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularMaterialModule } from './angular-material.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { MainheaderComponent } from './mainheader/mainheader.component';
@@ -27,7 +28,10 @@ import { GlobalCommon } from './global/common.model';
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [GlobalCommon],
-  bootstrap: [AppComponent]
+  providers:[GlobalCommon,
+              {provide: MAT_DATE_LOCALE, useValue: 'en-SG'},
+            ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -1,21 +1,26 @@
 <div class="container">
     <mat-card>
         <form [formGroup]="itemObj.itemFGroup" (ngSubmit)="onSubmit()">
+            <!-- 1st Row : Labels-->
             <div class="row">
-                <div class="col-3">
-                    <h2>Add New Device</h2>
+                <div class="col-5">
+                    <h2>Add New Item</h2>
                 </div>
-                <div class="col-2 offset-7">
+                <div class="col-2 offset-5">
                     <h2>ID: </h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="form-group col-12">
-                    <label>Device Name / Model</label>
-                    <input class="form-control" formControlName="fgItemName" id="deviceName" 
-                    placeholder="Enter Name / Model of the Device" name="itemName">
-                  </div>
+
+            <!-- 2nd Row Item Name -->
+            <div class="row form-group">
+                <label class="col-2 col-form-label" for="itemName">Item Name</label>
+                <div class="col-10">
+                    <input class="form-control" formControlName="fgItemName" id="itemName"
+                    placeholder="Enter Name / Model of the Item" name="itemName">
+                </div>
             </div>
+           
+            <!-- 3rd Row Item Name Error-->
             <div class="form-group row">
                 <div class="col-sm-12">
                     <div *ngIf="itemObj.itemFGroup.controls['fgItemName'].dirty" 
@@ -23,9 +28,84 @@
                         style="text-align: center; color:red"><b>Item Name is required</b></div>
                 </div>
             </div>
+            <!-- 4th Row Item Serial Number -->
+            <div class="row form-group">
+                <label class="col-2 col-form-label" for="itemSN">Item SN</label>
+                <div class="col-10">
+                    <input class="form-control" formControlName="fgSerialNum" id="itemSN"
+                    placeholder="Enter SerialNumber of the Item" name="itemSN">
+                </div>
+            </div>
+            <!-- 5th Row Item Serial Number Error-->
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <div *ngIf="itemObj.itemFGroup.controls['fgSerialNum'].dirty" 
+                        [hidden]="!(itemObj.itemFGroup.controls['fgSerialNum'].hasError('required'))"
+                        style="text-align: center; color:red"><b>Item Serial Number is required</b></div>
+                </div>
+            </div>
+
+            <!-- 6th Row Item Category, Vendor ID : Dropdown List -->
+            <div class="row form-group">
+                <!-- Category Dropdown -->
+                <label class="col-2 col-form-label" for="catId">Category</label>
+                <div class="col-4">
+                    <select class="form-control" formControlName="fgCategory">
+                        <option *ngFor="let c of catList.category" [ngValue]="c.catId">
+                            {{c.catName}} {{c.catId}}
+                        </option>
+                    </select>
+                </div>
+                <!-- Vendor Dropdown-->
+                <label class="col-2 col-form-label" for="vendorId">Vendor</label>
+                <div class="col-4">
+                    <select class="form-control" name="vendorId" formControlName="fgVendor">
+                        <!-- <option *ngFor="let c of catList.category" [ngValue]="c.catId">
+                            {{c.catName}}
+                        </option> -->
+                        <option value=1>vendorId</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 7th Row Created By and Created Date -->
+            <div class="row form-group">
+                <label class="col-2 col-form-label" for="createdBy">Created By</label>
+                <div class="col-4">
+                    <input class="form-control" id="createdBy" formControlName="fgCreatedBy"
+                    placeholder="Current ID" name="createdBy">
+                </div>
+                <label class="col-2 col-form-label" for="createdDate">Created On</label>
+                <div class="col-4">
+                    <mat-form-field appearance="legacy" >
+                        <input matInput [matDatepicker]="createdDateDP" readonly formControlName="fgCreatedOn">
+                        <mat-datepicker-toggle matSuffix [for]="createdDateDP"></mat-datepicker-toggle>
+                        <mat-datepicker #createdDateDP readonly="false"></mat-datepicker>
+                      </mat-form-field>
+                </div>
+            </div>
+            <!-- Do not need updated for Add New Item -->
+            <!-- 8th Row Updated By and Updated Date
+            <div class="row form-group">
+                <label class="col-2 col-form-label" for="updatedBy">Updated By</label>
+                <div class="col-4">
+                    <input class="form-control" id="updatedBy"
+                    placeholder="Current ID" name="updatedBy">
+                </div>
+                <label class="col-2 col-form-label" for="updatedDate">Updated On</label>
+                <div class="col-4">
+                    <mat-form-field appearance="legacy" >
+                        <input matInput [matDatepicker]="updatedDateDP" readonly >
+                        <mat-datepicker-toggle matSuffix [for]="updatedDateDP"></mat-datepicker-toggle>
+                        <mat-datepicker #updatedDateDP readonly="false"></mat-datepicker>
+                      </mat-form-field>
+                </div>
+            </div> -->
+
+            <!-- Last Row : Buttons Row -->
             <div class="row">
                 <div class="col-2">
-                    <button mat-raised-button [disabled]="!(itemObj.itemFGroup.valid)" color="primary" >Submit</button>
+                    <button mat-raised-button [disabled]="!(itemObj.itemFGroup.valid)"color="primary" >Submit</button>
                 </div>
                 <div class="col-2">
                     <button mat-raised-button color="warn" routerLink="/">Back</button>

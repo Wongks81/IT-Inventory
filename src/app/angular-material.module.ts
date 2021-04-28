@@ -14,6 +14,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 
+
 const materialModules = [
   MatDatepickerModule,
   MatNativeDateModule,
@@ -37,6 +38,9 @@ const materialModules = [
   exports: [
     ...materialModules
   ],
+  providers: [
+    
+  ]
 })
 
 export class AngularMaterialModule { }
