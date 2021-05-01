@@ -2,12 +2,12 @@
     <mat-card>
         <form [formGroup]="itemObj.itemFGroup" (ngSubmit)="onSubmit()">
             <!-- 1st Row : Labels-->
-            <div class="row">
-                <div class="col-5">
-                    <h2>Add New Item</h2>
-                </div>
-                <div class="col-2 offset-5">
-                    <h2>ID: </h2>
+            <div class="row form-group">
+                <label class="col-5" ><h2>Add New Item</h2> </label>
+                <label class="col-1 col-form-label offset-4" for="itemId">ID: </label>
+                <div class="col-2">
+                    <input class="form-control" formControlName="fgItemId" id="itemId"
+                        readonly name="itemId">
                 </div>
             </div>
 
@@ -78,7 +78,7 @@
                 <label class="col-2 col-form-label" for="createdDate">Created On</label>
                 <div class="col-4">
                     <mat-form-field appearance="legacy" >
-                        <input matInput [matDatepicker]="createdDateDP" readonly formControlName="fgCreatedOn">
+                        <input matInput [matDatepicker]="createdDateDP" readonly formControlName="fgCreatedDate">
                         <mat-datepicker-toggle matSuffix [for]="createdDateDP"></mat-datepicker-toggle>
                         <mat-datepicker #createdDateDP readonly="false"></mat-datepicker>
                       </mat-form-field>

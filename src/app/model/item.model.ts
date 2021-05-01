@@ -27,11 +27,14 @@ export class Item{
 
         // var vItemCheck =[];
         // vItemCheck.push(Validators.required);
+        this.itemFGroup.addControl("fgItemId", new FormControl(''));
         this.itemFGroup.addControl("fgItemName", new FormControl('', Validators.required));
         this.itemFGroup.addControl("fgSerialNum", new FormControl('', Validators.required));
         this.itemFGroup.addControl("fgCategory", new FormControl(''));
         this.itemFGroup.addControl("fgVendor", new FormControl(''));
         this.itemFGroup.addControl("fgCreatedBy", new FormControl(''));
-        this.itemFGroup.addControl("fgCreatedOn", new FormControl(''));
+        this.itemFGroup.addControl("fgCreatedDate", new FormControl(''));
+        this.itemFGroup.addControl("fgUpdatedBy", new FormControl(''));
+        this.itemFGroup.addControl("fgUpdatedDate", new FormControl(''));
     }
 };

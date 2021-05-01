@@ -35,9 +35,12 @@ router.post('/', async(req,res)=>{
 
 router.put('/', async(req,res)=>{
     try{
-        const {itemId, itemName, itemSerialNum, catId, vendorId} = req.body;
+        const {itemId, itemName, itemSN, catId, vendorId, createdDate, createdBy, updatedDate, updatedBy} = req.body;
+        
         // Double quotes to keep the column Name casing.
-        const putList = await pool.query("Update tblitems set \"itemName\" = $1 where \"itemId\" = $2", [itemName, itemId]);
+        const putList = await pool.query("Update tblitems set \"itemName\"=$1, \"itemSN\"=$2, \"vendorId\"=$3, \"catId\"=$4, \"createdDate\"=$5, " + 
+                                         "\"createdBy\"=$6, \"updatedDate\"=$7, \"updatedBy\"=$8 where \"itemId\"=$9", 
+                                         [itemName, itemSN, vendorId, catId, createdDate, createdBy, updatedDate, updatedBy, itemId]);
         res.status(200).send({
             message:'Item changed successfully!',
         });

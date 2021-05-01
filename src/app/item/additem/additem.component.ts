@@ -31,7 +31,7 @@ export class AddItemComponent implements OnInit {
         //init the category dropdown with the 1st value
         this.itemObj.itemFGroup.controls.fgCategory.setValue(this.catList.category[0].catId);
         this.itemObj.itemFGroup.controls.fgVendor.setValue(1);
-        this.itemObj.itemFGroup.controls.fgCreatedOn.setValue(this.initDate);
+        this.itemObj.itemFGroup.controls.fgCreatedDate.setValue(this.initDate);
         
       },
       res => this.Error);
