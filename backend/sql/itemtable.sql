@@ -28,6 +28,24 @@ create table tblmaintenance(
 	FOREIGN KEY ("mainId") REFERENCES tblitems("itemId")
 )
 
+-- create tblvendor SQL:
+create table tblvendor(
+    "vendorId" int GENERATED ALWAYS AS identity primary key,
+    "vendorCoyName" text,
+    "vendorAMName" text,
+    "vendorAMEmail" text,
+    "vendorAMCoyPhone" text,
+    "vendorAMMobile" text
+)
+
+-- create tblitems_vendor SQL (Many to Many relationship):
+create table tblitems_vendor(
+    "itemId" int REFERENCES tblitems("itemId") on Update CASCADE on Delete CASCADE,
+    "vendorId" int REFERENCES tblvendor("vendorId") on Update CASCADE,
+    "itemPrice" numeric(5,2),
+    "itemQuantity" int default 1,
+    Constraint items_vendor_pk primary key("itemId","vendorId")
+)
 
 -- insert test data
 insert into tblcategory ("catName") values ('Laptop');
