@@ -1,10 +1,13 @@
-import { ItemComponent } from "./item/item.component";
+import { ItemComponent } from './item/item.component';
+import { LoginComponent } from './login/login.component';
 
 export const appRoutes = [
-    {path:'', component:ItemComponent},
-    //{path:'Item', component:ItemComponent},
+  { path: '', component: LoginComponent },
+  //{path:'Item', component:ItemComponent},
 
-    //Lazy loading for mainheader routes
-    {path:'item', loadChildren :() => import('./item/item.module')
-                    .then(c => c.itemModule)}
-]
+  //Lazy loading for mainheader routes
+  {
+    path: 'item',
+    loadChildren: () => import('./item/item.module').then((c) => c.itemModule),
+  },
+];

@@ -13,11 +13,13 @@ import { MainheaderComponent } from './mainheader/mainheader.component';
 
 import { appRoutes } from './app.routing';
 import { GlobalCommon } from './global/common.model';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainheaderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
